@@ -90,14 +90,94 @@ const pizzaPortuguesa = new Pizza(
 const bebidaCocaNormal = new Bebida('Coca-cola', 9);
 const bebidaAgua = new Bebida('Água', 6);
 const bebidaMatteNatural = new Bebida('Matte Natural', 8);
+// Boas-vindas
+function bemvindo() {
+    alert("Seja bem-vindo(a) a Mamma Mia Pizzas!");
+  }
+  
+  bemvindo();
+  
 
-//  PODE APAGAR. Teste para verificar as classes e os métodos. Nesse teste eu criei um novo pedido usando a classe pedido, adicionei o sabor da pizza e a bebida, e depois pedi o valor total.
 
-const pedido = new Pedido();
-pedido.adicionarPizza(pizzaPepperoni, 'pequena');
-pedido.adicionarBebida(bebidaAgua);
+function processarPedido() {
+    const pedido = new Pedido();
 
-console.log(pedido.produtos);
-console.log(pedido.valorTotal());
+    // Selecionar sabor da pizza
+    const saborPizza = prompt("Escolha o sabor da pizza:\n1. Calabresa\n2. Pepperoni\n3. Portuguesa");
+    let pizzaEscolhida;
 
-// Receber o sabor, tamanho e bebida por meio de prompt. Criar um pedido, adicionar a pizza e bebida e retornar o valor por meio do Alert.
+    switch (saborPizza) {
+        case '1':
+            pizzaEscolhida = pizzaCalabresa;
+            break;
+        case '2':
+            pizzaEscolhida = pizzaPepperoni;
+            break;
+        case '3':
+            pizzaEscolhida = pizzaPortuguesa;
+            break;
+        default:
+            alert("Sabor inválido! Pedido cancelado.");
+            return;
+    }
+
+    // tamanho da pizza
+    const tamanhoPizza = prompt("Escolha o tamanho da pizza:\n1. Pequena\n2. Média\n3. Grande");
+    let tamanhoEscolhido;
+
+    switch (tamanhoPizza) {
+        case '1':
+            tamanhoEscolhido = 'pequena';
+            break;
+        case '2':
+            tamanhoEscolhido = 'média';
+            break;
+        case '3':
+            tamanhoEscolhido = 'grande';
+            break;
+        default:
+            alert("Tamanho inválido! Pedido cancelado.");
+            return;
+    }
+
+    // Adicionar pizza ao pedido
+    pedido.adicionarPizza(pizzaEscolhida, tamanhoEscolhido);
+
+    //  bebida
+    const escolhaBebida = prompt("Escolha uma bebida:\n1. Coca-cola\n2. Água\n3. Matte Natural\n4. Nenhuma");
+    let bebidaEscolhida;
+
+    switch (escolhaBebida) {
+        case '1':
+            bebidaEscolhida = bebidaCocaNormal;
+            break;
+        case '2':
+            bebidaEscolhida = bebidaAgua;
+            break;
+        case '3':
+            bebidaEscolhida = bebidaMatteNatural;
+            break;
+        case '4':
+            bebidaEscolhida = null; //  bebida não selecionada
+            break;
+        default:
+            alert("Opção de bebida inválida! Pedido cancelado.");
+            return;
+    }
+
+    if (bebidaEscolhida) {
+        pedido.adicionarBebida(bebidaEscolhida);
+    }
+
+    // resumo do pedido e valor total
+    let resumoPedido = "Resumo do Pedido:\n";
+    pedido.produtos.forEach((produto) => {
+        resumoPedido += `${produto.item.nome} (${produto.tipo}): R$ ${produto.preco}\n`;
+    });
+
+    resumoPedido += `Total: R$ ${pedido.valorTotal()}`;
+    alert(resumoPedido);
+}
+
+processarPedido();
+
