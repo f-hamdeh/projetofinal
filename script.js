@@ -123,7 +123,7 @@ function processarPedido() {
 
     // tamanho da pizza
     const tamanhoPizza = prompt(
-        '"Digite o número do tamanho da pizza:\n1. Pequena\n2. Média\n3. Grande'
+        'Digite o número do tamanho da pizza:\n1. Pequena\n2. Média\n3. Grande'
     );
     let tamanhoEscolhido;
 
@@ -147,7 +147,7 @@ function processarPedido() {
 
     //  bebida
     const escolhaBebida = prompt(
-        '"Digite o número da bebida:\n1. Coca-cola\n2. Água\n3. Matte Natural\n4. Nenhuma'
+        'Digite o número da bebida:\n1. Coca-cola\n2. Água\n3. Matte Natural\n4. Nenhuma'
     );
     let bebidaEscolhida;
 
