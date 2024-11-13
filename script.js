@@ -92,18 +92,18 @@ const bebidaAgua = new Bebida('Água', 6);
 const bebidaMatteNatural = new Bebida('Matte Natural', 8);
 // Boas-vindas
 function bemvindo() {
-    alert("Seja bem-vindo(a) a Mamma Mia Pizzas!");
-  }
-  
-  bemvindo();
-  
+    alert('Seja bem-vindo(a) a Mamma Mia Pizzas!');
+}
 
+bemvindo();
 
 function processarPedido() {
     const pedido = new Pedido();
 
     // Selecionar sabor da pizza
-    const saborPizza = prompt("Escolha o sabor da pizza:\n1. Calabresa\n2. Pepperoni\n3. Portuguesa");
+    const saborPizza = prompt(
+        'Digite o número do sabor da pizza:\n1. Calabresa\n2. Pepperoni\n3. Portuguesa'
+    );
     let pizzaEscolhida;
 
     switch (saborPizza) {
@@ -117,12 +117,14 @@ function processarPedido() {
             pizzaEscolhida = pizzaPortuguesa;
             break;
         default:
-            alert("Sabor inválido! Pedido cancelado.");
+            alert('Sabor inválido! Pedido cancelado.');
             return;
     }
 
     // tamanho da pizza
-    const tamanhoPizza = prompt("Escolha o tamanho da pizza:\n1. Pequena\n2. Média\n3. Grande");
+    const tamanhoPizza = prompt(
+        '"Digite o número do tamanho da pizza:\n1. Pequena\n2. Média\n3. Grande'
+    );
     let tamanhoEscolhido;
 
     switch (tamanhoPizza) {
@@ -136,7 +138,7 @@ function processarPedido() {
             tamanhoEscolhido = 'grande';
             break;
         default:
-            alert("Tamanho inválido! Pedido cancelado.");
+            alert('Tamanho inválido! Pedido cancelado.');
             return;
     }
 
@@ -144,7 +146,9 @@ function processarPedido() {
     pedido.adicionarPizza(pizzaEscolhida, tamanhoEscolhido);
 
     //  bebida
-    const escolhaBebida = prompt("Escolha uma bebida:\n1. Coca-cola\n2. Água\n3. Matte Natural\n4. Nenhuma");
+    const escolhaBebida = prompt(
+        '"Digite o número da bebida:\n1. Coca-cola\n2. Água\n3. Matte Natural\n4. Nenhuma'
+    );
     let bebidaEscolhida;
 
     switch (escolhaBebida) {
@@ -161,7 +165,7 @@ function processarPedido() {
             bebidaEscolhida = null; //  bebida não selecionada
             break;
         default:
-            alert("Opção de bebida inválida! Pedido cancelado.");
+            alert('Opção de bebida inválida! Pedido cancelado.');
             return;
     }
 
@@ -170,7 +174,7 @@ function processarPedido() {
     }
 
     // resumo do pedido e valor total
-    let resumoPedido = "Resumo do Pedido:\n";
+    let resumoPedido = 'Resumo do Pedido:\n';
     pedido.produtos.forEach((produto) => {
         resumoPedido += `${produto.item.nome} (${produto.tipo}): R$ ${produto.preco}\n`;
     });
@@ -180,4 +184,3 @@ function processarPedido() {
 }
 
 processarPedido();
-
