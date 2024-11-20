@@ -38,8 +38,8 @@ class Bebida {
 // Classe pedido. Permite você adicionar bebida ou pizza ao pedido e retorna o valor com o valorTotal()
 
 class Pedido {
-    constructor() {
-        this.id = 0;
+    constructor(id) {
+        this.id = id;
         this.produtos = [];
     }
 
@@ -95,10 +95,14 @@ function bemvindo() {
     alert('Seja bem-vindo(a) a Mamma Mia Pizzas!');
 }
 
+//  Número do Pedido
+let numeroDoPedido = 1;
+
 bemvindo();
 
 function processarPedido() {
-    const pedido = new Pedido();
+    const pedido = new Pedido(numeroDoPedido);
+    numeroDoPedido = numeroDoPedido++;
 
     // Selecionar sabor da pizza
     const saborPizza = prompt(
@@ -106,40 +110,36 @@ function processarPedido() {
     );
     let pizzaEscolhida;
 
-    switch (saborPizza) {
-        case '1':
-            pizzaEscolhida = pizzaCalabresa;
-            break;
-        case '2':
-            pizzaEscolhida = pizzaPepperoni;
-            break;
-        case '3':
-            pizzaEscolhida = pizzaPortuguesa;
-            break;
-        default:
-            alert('Sabor inválido! Pedido cancelado.');
-            return;
+    saborPizza.toLowerCase();
+
+    if (saborPizza == '1' || saborPizza == 'calabresa') {
+        pizzaEscolhida = pizzaCalabresa;
+    } else if (saborPizza == '2' || saborPizza == 'pepperoni') {
+        pizzaEscolhida = pizzaPepperoni;
+    } else if (saborPizza == '3' || saborPizza == 'portuguesa') {
+        pizzaEscolhida = pizzaPortuguesa;
+    } else {
+        alert('Sabor inválido! Pedido cancelado.');
+        return;
     }
 
     // tamanho da pizza
     const tamanhoPizza = prompt(
-        'Digite o número do tamanho da pizza:\n1. Pequena\n2. Média\n3. Grande'
+        'Digite o número ou nome do tamanho da pizza:\n1. Pequena\n2. Média\n3. Grande'
     );
     let tamanhoEscolhido;
 
-    switch (tamanhoPizza) {
-        case '1':
-            tamanhoEscolhido = 'pequena';
-            break;
-        case '2':
-            tamanhoEscolhido = 'média';
-            break;
-        case '3':
-            tamanhoEscolhido = 'grande';
-            break;
-        default:
-            alert('Tamanho inválido! Pedido cancelado.');
-            return;
+    tamanhoPizza.toLowerCase();
+
+    if (tamanhoPizza == '1' || tamanhoPizza == 'pequena') {
+        tamanhoEscolhido = 'pequena';
+    } else if (tamanhoPizza == '2' || tamanhoPizza == 'média') {
+        tamanhoEscolhido = 'média';
+    } else if (tamanhoPizza == '3' || tamanhoPizza == 'grande') {
+        tamanhoEscolhido = 'grande';
+    } else {
+        alert('Não encontramos esse tamanho. Pedido cancelado');
+        return;
     }
 
     // Adicionar pizza ao pedido
@@ -147,37 +147,36 @@ function processarPedido() {
 
     //  bebida
     const escolhaBebida = prompt(
-        'Digite o número da bebida:\n1. Coca-cola\n2. Água\n3. Matte Natural\n4. Nenhuma'
+        'Digite o número ou nome da bebida:\n1. Coca-cola\n2. Água\n3. Matte Natural\n4. Nenhuma'
     );
     let bebidaEscolhida;
 
-    switch (escolhaBebida) {
-        case '1':
-            bebidaEscolhida = bebidaCocaNormal;
-            break;
-        case '2':
-            bebidaEscolhida = bebidaAgua;
-            break;
-        case '3':
-            bebidaEscolhida = bebidaMatteNatural;
-            break;
-        case '4':
-            bebidaEscolhida = null; //  bebida não selecionada
-            break;
-        default:
-            alert('Opção de bebida inválida! Pedido cancelado.');
-            return;
+    escolhaBebida.toLowerCase();
+
+    if (escolhaBebida == '1' || escolhaBebida == 'coca-cola') {
+        bebidaEscolhida = bebidaCocaNormal;
+    } else if (escolhaBebida == '2' || escolhaBebida == 'água') {
+        bebidaEscolhida = bebidaAgua;
+    } else if (escolhaBebida == '3' || escolhaBebida == 'matte natural') {
+        bebidaEscolhida = bebidaMatteNatural;
+    } else {
+        alert('Opção de bebida inválida! Pedido cancelado.');
+        return;
     }
 
     if (bebidaEscolhida) {
         pedido.adicionarBebida(bebidaEscolhida);
     }
 
-    // resumo do pedido e valor total
-    let resumoPedido = 'Resumo do Pedido:\n';
+    // Resumo do pedido e valor total
+
+    let resumoPedido = `Resumo do Pedido ${pedido.id}:\n`;
+
     pedido.produtos.forEach((produto) => {
         resumoPedido += `${produto.item.nome} (${produto.tipo}): R$ ${produto.preco}\n`;
     });
+
+    console.log(pedido.produtos);
 
     resumoPedido += `Total: R$ ${pedido.valorTotal()}`;
     alert(resumoPedido);
