@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+$cinza-principal: #cfcfcf;
+$laranja_destaque: #fe5d26;
+$lilas: #5448c8;
+$escuro: #0c1713;
+$branco: #f8f4f9;
+
 * {
     padding: 0;
     margin: 0;
@@ -12,4 +20,209 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: 1.6rem;
     line-height: 1.2;
+    font-weight: 400;
+}
+
+.btn {
+    padding: 1rem 1.5rem;
+    background-color: $laranja_destaque;
+    color: $escuro;
+    border: none;
+    border-radius: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    width: fit-content;
+    font-size: 1.4rem;
+
+    &:hover {
+        background-color: transparent;
+        border: solid;
+        border-width: 2px;
+        border-color: $laranja_destaque;
+        color: $escuro;
+    }
+
+    &-outline {
+        background-color: transparent;
+        border: solid;
+        border-width: 2px;
+        border-color: $laranja_destaque;
+        color: $escuro;
+        width: fit-content;
+        font-size: 1.6rem;
+
+        &:hover {
+            background-color: $laranja_destaque;
+            color: $escuro;
+            font-weight: 600;
+            transform: scale(1.02);
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $branco;
+}
+
+.menu__texto {
+    list-style: none;
+    display: flex;
+    column-gap: 2rem;
+
+    li:hover,
+    li:active {
+        font-weight: 700;
+
+        a:hover,
+        a:active {
+            color: $laranja_destaque;
+        }
+    }
+}
+
+// Menu
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    height: 10rem;
+    align-items: center;
+    background-color: $escuro;
+
+    .logo {
+        width: 15rem;
+        margin-top: 10rem;
+        justify-content: center;
+    }
+
+    .header {
+        display: flex;
+        font-size: 1.5rem;
+        column-gap: 40rem;
+        color: $branco;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .carrinho {
+        display: flex;
+        column-gap: 1rem;
+    }
+
+    .carrinho__img {
+        align-self: center;
+    }
+}
+
+.section {
+    height: fit-content;
+}
+
+.section__hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2rem;
+    height: 55rem;
+
+    &__texto {
+        line-height: 5rem;
+        text-align: center;
+    }
+
+    p {
+        font-size: 2.5rem;
+    }
+
+    h1 {
+        font-size: 6rem;
+    }
+
+    .hero__video {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        min-width: 100%;
+        min-height: 100%;
+        overflow: hidden;
+    }
+}
+
+.section__titulo {
+    margin-top: 10rem;
+    margin-bottom: 2rem;
+    margin-left: 8rem;
+}
+
+.categoria {
+    display: flex;
+    justify-content: center;
+    column-gap: 5rem;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    border-radius: 2rem;
+    border-color: $escuro;
+    width: 35rem;
+    height: 25rem;
+    padding: 3rem;
+    line-height: 2.2rem;
+    border: solid;
+    border-width: 1px;
+    border-color: #cfcfcf;
+    box-shadow: 0px 2px 4px rgba($escuro, 0.1);
+    margin-top: 5rem;
+    row-gap: 1rem;
+
+    .info {
+        height: 12rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+}
+
+.section h2 {
+    margin-left: 5rem;
+    font-size: 3rem;
+}
+
+.div__logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+
+    .footer__logo {
+        height: 15rem;
+        margin-top: 5rem;
+        margin-bottom: -20rem;
+    }
+}
+
+footer {
+    height: 25rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $escuro;
+    color: $branco;
+
+    .footer__texto {
+        margin-left: 20rem;
+        line-height: 3rem;
+        text-align: right;
+    }
+
+    ul {
+        list-style: none;
+        margin-left: 5rem;
+
+        a {
+            color: $branco;
+        }
+    }
 }
